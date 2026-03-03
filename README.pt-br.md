@@ -58,8 +58,9 @@ Ele usa a **Windows UI Automation API** para descobrir janelas, inspecionar arvo
 | **Screenshots** | `screenshot_window` | Captura screenshots de janelas como imagens PNG em base64 |
 | **Gerenciar Janelas** | `set_window_state` | Minimizar, maximizar, restaurar ou trazer janelas para frente |
 | **Rastreio de Foco** | `get_focused_element` | Identifica o elemento com foco em qualquer janela |
+| **Motor de Workflow** | `run_workflow` | Executa sequencias de automacao multi-passo em uma unica chamada |
 
-> **16 ferramentas. Zero configuracao. Um executavel.**
+> **17 ferramentas. Zero configuracao. Um executavel.**
 
 ## Instalacao
 
@@ -117,6 +118,31 @@ Pronto!
 2. Siga a [instalacao Windows](#passo-1--baixar) dentro da VM
 3. Execute o Claude Code dentro da VM
 
+## Motor de Workflow
+
+O `run_workflow` e a funcionalidade mais poderosa — permite que o Claude execute **multiplos passos em uma unica chamada** em vez de ir e voltar uma ferramenta por vez. Isso e essencial para processos longos como preencher formularios ou navegar interfaces complexas.
+
+**Como funciona:** Os passos rodam sequencialmente. `find_element` e `wait_for_element` definem automaticamente o **contexto do elemento**, e as acoes seguintes (`click`, `set_value`, `send_keys`, etc.) usam esse contexto sem precisar de um `element_ref` explicito.
+
+**Exemplo — Preencher um formulario e salvar:**
+```json
+{
+  "steps": [
+    { "action": "find_element", "window_handle": 123, "automation_id": "txtNome" },
+    { "action": "set_value", "value": "Joao Silva" },
+    { "action": "find_element", "window_handle": 123, "automation_id": "txtEmail" },
+    { "action": "set_value", "value": "joao@exemplo.com" },
+    { "action": "find_element", "window_handle": 123, "automation_id": "btnSalvar" },
+    { "action": "click" },
+    { "action": "screenshot", "window_handle": 123 }
+  ]
+}
+```
+
+**Acoes suportadas:** `find_element`, `click`, `set_value`, `get_value`, `send_keys`, `wait_for_element`, `screenshot`, `expand_collapse`, `select_item`, `wait`
+
+> Para no primeiro erro e retorna resultados parciais, assim voce sempre sabe o que foi executado com sucesso.
+
 ## Inicio Rapido
 
 Depois de instalado, basta conversar com o Claude naturalmente:
@@ -126,9 +152,10 @@ Depois de instalado, basta conversar com o Claude naturalmente:
 "Digita 'Ola Mundo' no campo de texto"
 "Tira um screenshot da Calculadora"
 "Le todos os dados do grid no meu sistema ERP"
+"Preenche o formulario de cadastro com nome Joao, email joao@teste.com e clica em Enviar"
 ```
 
-O Claude vai usar as ferramentas do MCP automaticamente.
+O Claude vai usar as ferramentas do MCP automaticamente — para tarefas multi-passo, ele usa o `run_workflow` para executar tudo em uma unica chamada.
 
 ## Arquitetura
 
@@ -146,7 +173,8 @@ desktop-automation.exe
     ├── Property tools         — get_element_properties, get_value, get_focused_element
     ├── Interaction tools      — click_element, set_value, send_keys, select_item, expand_collapse
     ├── Screenshot tools       — screenshot_window
-    └── Advanced tools         — read_grid
+    ├── Advanced tools         — read_grid
+    └── Workflow engine        — run_workflow (sequenciador multi-passo com passagem de contexto)
 ```
 
 **Construido com:** [Rust](https://www.rust-lang.org/) · [rmcp](https://crates.io/crates/rmcp) · [uiautomation](https://crates.io/crates/uiautomation) · [tokio](https://tokio.rs/) · [win_screenshot](https://crates.io/crates/win_screenshot)
