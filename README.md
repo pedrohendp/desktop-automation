@@ -16,11 +16,15 @@
   <code>click buttons</code> · <code>read values</code> · <code>fill forms</code> · <code>take screenshots</code> · <code>navigate trees</code> · <code>read grids</code>
 </p>
 
+<p align="center">
+  <a href="#installation">English</a> · <a href="README.pt-br.md">Portugues</a>
+</p>
+
 ---
 
 <h3 align="center">
   <br/>
-  ⚡ MADE WITH CLAUDE, FOR CLAUDE ⚡
+  MADE WITH CLAUDE, FOR CLAUDE
   <br/><br/>
   <sub>Built entirely by AI to give AI the power to see and control desktop applications.<br/>
   This is what happens when you let Claude build its own tools.</sub>
@@ -35,9 +39,7 @@
 
 It uses the **Windows UI Automation API** to discover windows, inspect control trees, click buttons, type text, read values, capture screenshots, and much more — all through a simple MCP interface.
 
-### Think of it as "Selenium, but for desktop apps"
-
-Instead of automating browsers, this automates **any native Windows application**: legacy ERP systems, WinForms tools, WPF dashboards, Win32 dialogs, even Electron apps.
+> Think of it as **"Selenium, but for desktop apps"** — legacy ERP systems, WinForms tools, WPF dashboards, Win32 dialogs, even Electron apps.
 
 ## Features
 
@@ -57,216 +59,83 @@ Instead of automating browsers, this automates **any native Windows application*
 | **Window Management** | `set_window_state` | Minimize, maximize, restore, or bring windows to foreground |
 | **Focus Tracking** | `get_focused_element` | Get the currently focused element across all windows |
 
-### 16 tools. Zero configuration. One executable.
-
-## Use Cases
-
-- **Automated Testing** — Drive UI tests on legacy desktop applications
-- **Data Extraction** — Scrape data from ERP systems, accounting software, or any desktop tool
-- **Process Automation** — Automate repetitive workflows across multiple desktop apps
-- **Accessibility Auditing** — Inspect UI Automation trees and element properties
-- **AI-Powered Assistants** — Let Claude interact with your desktop apps on your behalf
-- **Legacy System Integration** — Bridge old desktop applications with modern AI workflows
+> **16 tools. Zero configuration. One executable.**
 
 ## Installation
 
 ### Prerequisites
 
-- **Windows 10/11** (UI Automation is a Windows-native API)
-- **Claude Code** (or any MCP-compatible client)
+- **Windows 10/11**
+- **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** (or any MCP-compatible client)
 
-### Option 1: Download Pre-built Binary (Recommended)
+### Step 1 — Download
 
-1. Go to the [Releases](https://github.com/pedrohendp/desktop-automation/releases) page
-2. Download `desktop-automation.exe`
-3. Place it anywhere on your machine (e.g., `C:\Tools\desktop-automation.exe`)
-4. Add it to Claude Code:
+Go to [Releases](https://github.com/pedrohendp/desktop-automation/releases) and download **`desktop-automation.exe`**.
 
-```bash
-claude mcp add desktop-automation -- "C:\Tools\desktop-automation.exe"
-```
+### Step 2 — Register the MCP
 
-5. Restart Claude Code. Done!
-
-### Option 2: Build from Source
-
-#### Requirements
-
-- [Rust](https://rustup.rs/) (1.75+)
-- Windows SDK (comes with Visual Studio Build Tools)
+Open your terminal and run:
 
 ```bash
-# Clone the repository
-git clone https://github.com/pedrohendp/desktop-automation.git
-cd desktop-automation
-
-# Build in release mode
-cargo build --release
-
-# The binary will be at target/release/desktop-automation.exe
+claude mcp add desktop-automation -s user -- "C:\Tools\desktop-automation.exe"
 ```
 
-Then add it to Claude Code:
+> Replace `C:\Tools\desktop-automation.exe` with the actual path where you saved the file.
 
-```bash
-claude mcp add desktop-automation -- "C:\path\to\target\release\desktop-automation.exe"
+### Step 3 — Restart Claude Code
+
+Close and reopen Claude Code. The MCP will connect automatically.
+
+### Step 4 — Test it
+
+Just ask Claude:
+
+```
+"List all open windows on my desktop"
 ```
 
-## Setup Guide
+That's it!
 
-### Windows
+---
 
-<details>
-<summary><strong>Step-by-step (click to expand)</strong></summary>
+### Linux (via WSL2)
 
-1. **Download** the latest `desktop-automation.exe` from [Releases](https://github.com/pedrohendp/desktop-automation/releases)
-
-2. **Create a folder** for the executable:
-   ```powershell
-   mkdir C:\Tools
-   ```
-
-3. **Move the executable** to that folder:
-   ```powershell
-   move desktop-automation.exe C:\Tools\
-   ```
-
-4. **Register with Claude Code** (run in your terminal):
-   ```bash
-   claude mcp add desktop-automation -- "C:\Tools\desktop-automation.exe"
-   ```
-
-5. **Restart Claude Code** and verify the MCP is connected:
-   ```
-   Just ask Claude: "List all open windows on my desktop"
-   ```
-
-</details>
-
-### Linux
-
-<details>
-<summary><strong>Step-by-step (click to expand)</strong></summary>
-
-> **Note:** This MCP relies on the Windows UI Automation API. On Linux, it can only run inside a Windows environment.
-
-**Option A: WSL2 (Windows Subsystem for Linux)**
-
-If you're using Claude Code from WSL2 on a Windows host:
+> This MCP uses the Windows UI Automation API. On Linux, it runs through WSL2 on a Windows host.
 
 1. Download `desktop-automation.exe` to your Windows filesystem (e.g., `C:\Tools\`)
-
-2. From WSL2, register the MCP pointing to the Windows executable:
+2. From WSL2:
    ```bash
-   claude mcp add desktop-automation -- "/mnt/c/Tools/desktop-automation.exe"
+   claude mcp add desktop-automation -s user -- "/mnt/c/Tools/desktop-automation.exe"
    ```
-
 3. Restart Claude Code
 
-**Option B: Wine (experimental)**
+### macOS (via VM)
 
-```bash
-# Install Wine
-sudo apt install wine64
+> Requires a Windows virtual machine (Parallels, VMware, or UTM).
 
-# Download the .exe and run via Wine
-claude mcp add desktop-automation -- wine "/path/to/desktop-automation.exe"
-```
-
-> Wine support is experimental. UI Automation may not work correctly in all scenarios.
-
-</details>
-
-### macOS
-
-<details>
-<summary><strong>Step-by-step (click to expand)</strong></summary>
-
-> **Note:** This MCP uses the Windows UI Automation API and requires a Windows environment.
-
-**Option A: Parallels / VMware / UTM (Recommended)**
-
-1. Run Windows in a virtual machine (Parallels, VMware Fusion, or UTM)
-2. Inside the Windows VM, follow the [Windows setup guide](#windows)
-3. Run Claude Code inside the VM, or connect to it remotely
-
-**Option B: Remote Windows Machine**
-
-If you have access to a Windows machine (remote desktop, cloud VM, etc.):
-
-1. Install the MCP on the Windows machine
-2. Use an MCP proxy/tunnel to connect your local Claude Code to the remote MCP server
-
-> Native macOS desktop automation would require a separate implementation using the macOS Accessibility API. Contributions welcome!
-
-</details>
+1. Set up a Windows VM
+2. Follow the [Windows installation](#step-1--download) inside the VM
+3. Run Claude Code inside the VM
 
 ## Quick Start
 
 Once installed, just talk to Claude naturally:
 
 ```
-You: "List all open windows"
-You: "Click the 'Save' button in Notepad"
-You: "Type 'Hello World' into the text field"
-You: "Take a screenshot of the Calculator app"
-You: "Read all data from the grid in my ERP application"
-You: "Expand the 'Settings' tree node"
+"Click the 'Save' button in Notepad"
+"Type 'Hello World' into the text field"
+"Take a screenshot of the Calculator app"
+"Read all data from the grid in my ERP application"
 ```
 
-Claude will use the MCP tools automatically to interact with your desktop.
-
-## Configuration
-
-### Claude Code (CLI)
-
-```bash
-# Add (global — available in all projects)
-claude mcp add desktop-automation -- "/path/to/desktop-automation.exe"
-
-# Add (project-scoped)
-claude mcp add desktop-automation --scope project -- "/path/to/desktop-automation.exe"
-
-# Remove
-claude mcp remove desktop-automation
-
-# Verify
-claude mcp list
-```
-
-### Claude Desktop App
-
-Add to your `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "desktop-automation": {
-      "command": "C:\\Tools\\desktop-automation.exe",
-      "args": []
-    }
-  }
-}
-```
-
-### Any MCP Client
-
-This is a standard **stdio MCP server**. Just point your client to the executable:
-
-```json
-{
-  "type": "stdio",
-  "command": "/path/to/desktop-automation.exe",
-  "args": []
-}
-```
+Claude will use the MCP tools automatically.
 
 ## Architecture
 
 ```
 desktop-automation.exe
-├── MCP Server (rmcp)          — Handles JSON-RPC communication over stdio
-├── COM Thread                 — Dedicated thread for Windows COM/UI Automation
+├── MCP Server (rmcp)          — JSON-RPC over stdio
+├── COM Thread                 — Windows COM/UI Automation
 ├── Automation Core            — UI Automation API wrapper
 │   ├── Element discovery      — Find and traverse UI elements
 │   ├── Pattern support        — Invoke, Value, Selection, ExpandCollapse, Grid
@@ -280,27 +149,21 @@ desktop-automation.exe
     └── Advanced tools         — read_grid
 ```
 
-**Built with:**
-- [Rust](https://www.rust-lang.org/) — Performance and safety
-- [rmcp](https://crates.io/crates/rmcp) — MCP protocol implementation
-- [uiautomation](https://crates.io/crates/uiautomation) — Windows UI Automation bindings
-- [tokio](https://tokio.rs/) — Async runtime
-- [win_screenshot](https://crates.io/crates/win_screenshot) — Window capture
+**Built with:** [Rust](https://www.rust-lang.org/) · [rmcp](https://crates.io/crates/rmcp) · [uiautomation](https://crates.io/crates/uiautomation) · [tokio](https://tokio.rs/) · [win_screenshot](https://crates.io/crates/win_screenshot)
 
 ## Contributing
-
-Contributions are welcome! Whether it's bug fixes, new tools, or platform support.
 
 ```bash
 git clone https://github.com/pedrohendp/desktop-automation.git
 cd desktop-automation
-cargo build
-cargo run
+cargo build --release
 ```
+
+Requires [Rust 1.75+](https://rustup.rs/) and Windows SDK.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE).
 
 ---
 
