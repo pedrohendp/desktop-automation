@@ -1,0 +1,10 @@
+C:\MeusProjetos\winforms-mcp\target\release\deps\bitstream_io-d61cbd228fe5f866.d: C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\lib.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\huffman.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\read.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\write.rs
+
+C:\MeusProjetos\winforms-mcp\target\release\deps\libbitstream_io-d61cbd228fe5f866.rlib: C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\lib.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\huffman.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\read.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\write.rs
+
+C:\MeusProjetos\winforms-mcp\target\release\deps\libbitstream_io-d61cbd228fe5f866.rmeta: C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\lib.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\huffman.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\read.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\write.rs
+
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\lib.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\huffman.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\read.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitstream-io-4.9.0\src\write.rs:

@@ -1,0 +1,14 @@
+C:\MeusProjetos\winforms-mcp\target\release\deps\serde-8a33605f9668d97d.d: C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\MeusProjetos\winforms-mcp\target\release\build\serde-66bc19ae3f142624\out/private.rs
+
+C:\MeusProjetos\winforms-mcp\target\release\deps\libserde-8a33605f9668d97d.rlib: C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\MeusProjetos\winforms-mcp\target\release\build\serde-66bc19ae3f142624\out/private.rs
+
+C:\MeusProjetos\winforms-mcp\target\release\deps\libserde-8a33605f9668d97d.rmeta: C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\MeusProjetos\winforms-mcp\target\release\build\serde-66bc19ae3f142624\out/private.rs
+
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs:
+C:\Users\Vinicius.Gomes\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs:
+C:\MeusProjetos\winforms-mcp\target\release\build\serde-66bc19ae3f142624\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\MeusProjetos\\winforms-mcp\\target\\release\\build\\serde-66bc19ae3f142624\\out
