@@ -1,0 +1,71 @@
+use uiautomation::types::ControlType;
+
+/// Convert a human-readable control type name to the UIAutomation ControlType.
+pub fn string_to_control_type(s: &str) -> Option<ControlType> {
+    match s.to_lowercase().as_str() {
+        "button" => Some(ControlType::Button),
+        "edit" => Some(ControlType::Edit),
+        "text" => Some(ControlType::Text),
+        "checkbox" | "check_box" => Some(ControlType::CheckBox),
+        "radiobutton" | "radio_button" => Some(ControlType::RadioButton),
+        "combobox" | "combo_box" => Some(ControlType::ComboBox),
+        "list" => Some(ControlType::List),
+        "listitem" | "list_item" => Some(ControlType::ListItem),
+        "tree" => Some(ControlType::Tree),
+        "treeitem" | "tree_item" => Some(ControlType::TreeItem),
+        "tab" => Some(ControlType::Tab),
+        "tabitem" | "tab_item" => Some(ControlType::TabItem),
+        "table" => Some(ControlType::Table),
+        "datagrid" | "data_grid" => Some(ControlType::DataGrid),
+        "dataitem" | "data_item" => Some(ControlType::DataItem),
+        "window" => Some(ControlType::Window),
+        "menu" => Some(ControlType::Menu),
+        "menuitem" | "menu_item" => Some(ControlType::MenuItem),
+        "toolbar" | "tool_bar" => Some(ControlType::ToolBar),
+        "statusbar" | "status_bar" => Some(ControlType::StatusBar),
+        "scrollbar" | "scroll_bar" => Some(ControlType::ScrollBar),
+        "group" => Some(ControlType::Group),
+        "image" => Some(ControlType::Image),
+        "hyperlink" => Some(ControlType::Hyperlink),
+        "header" => Some(ControlType::Header),
+        "headeritem" | "header_item" => Some(ControlType::HeaderItem),
+        "pane" => Some(ControlType::Pane),
+        "custom" => Some(ControlType::Custom),
+        _ => None,
+    }
+}
+
+/// Convert a UIAutomation ControlType to a human-readable string.
+pub fn control_type_to_string(ct: ControlType) -> &'static str {
+    match ct {
+        ControlType::Button => "Button",
+        ControlType::Edit => "Edit",
+        ControlType::Text => "Text",
+        ControlType::CheckBox => "CheckBox",
+        ControlType::RadioButton => "RadioButton",
+        ControlType::ComboBox => "ComboBox",
+        ControlType::List => "List",
+        ControlType::ListItem => "ListItem",
+        ControlType::Tree => "Tree",
+        ControlType::TreeItem => "TreeItem",
+        ControlType::Tab => "Tab",
+        ControlType::TabItem => "TabItem",
+        ControlType::Table => "Table",
+        ControlType::DataGrid => "DataGrid",
+        ControlType::DataItem => "DataItem",
+        ControlType::Window => "Window",
+        ControlType::Menu => "Menu",
+        ControlType::MenuItem => "MenuItem",
+        ControlType::ToolBar => "ToolBar",
+        ControlType::StatusBar => "StatusBar",
+        ControlType::ScrollBar => "ScrollBar",
+        ControlType::Group => "Group",
+        ControlType::Image => "Image",
+        ControlType::Hyperlink => "Hyperlink",
+        ControlType::Header => "Header",
+        ControlType::HeaderItem => "HeaderItem",
+        ControlType::Pane => "Pane",
+        ControlType::Custom => "Custom",
+        _ => "Unknown",
+    }
+}

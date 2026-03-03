@@ -1,0 +1,31 @@
+[package]
+name = "desktop-automation"
+version = "0.1.0"
+edition = "2021"
+description = "MCP server for controlling Windows desktop applications (WinForms, WPF, Win32) via UI Automation"
+
+[dependencies]
+rmcp = { version = "0.17", features = ["server", "transport-io", "macros"] }
+uiautomation = "0.24"
+tokio = { version = "1", features = ["rt", "rt-multi-thread", "macros", "sync", "time", "io-std"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+schemars = "1.0"
+image = "0.25"
+base64 = "0.22"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+win-screenshot = "4.0"
+anyhow = "1.0"
+
+[dependencies.windows]
+version = "0.62"
+features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_System_Threading",
+    "Win32_System_Com",
+    "Win32_System_ProcessStatus",
+    "Win32_Graphics_Gdi",
+]
