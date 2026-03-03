@@ -103,6 +103,14 @@ pub struct SetWindowStateParams {
     pub state: String,
 }
 
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+pub struct RunWorkflowParams {
+    /// Array of steps to execute sequentially. Each step has an "action" field and action-specific parameters.
+    /// Steps that find elements (find_element, wait_for_element) automatically set the element context
+    /// for subsequent action steps (click, set_value, etc.), so you don't need to pass element_ref explicitly.
+    pub steps: Vec<crate::tools::workflow_tools::WorkflowStep>,
+}
+
 // ── Server ──
 
 #[derive(Clone)]
@@ -302,6 +310,20 @@ impl DesktopAutomationServer {
             .await
             .map_err(McpError::from)
     }
+
+    /// Execute a multi-step workflow in a single call. Each step runs sequentially; find_element and
+    /// wait_for_element steps automatically pass their result as context to subsequent action steps
+    /// (click, set_value, get_value, send_keys, etc.), so you don't need to specify element_ref
+    /// for every step. Stops on first error and returns partial results.
+    #[tool(description = "Execute a multi-step workflow in a single call. Steps run sequentially with automatic element context passing between find/wait steps and action steps. Supports: find_element, click, set_value, get_value, send_keys, wait_for_element, screenshot, expand_collapse, select_item, wait. Stops on first error and returns partial results.")]
+    async fn run_workflow(
+        &self,
+        Parameters(params): Parameters<RunWorkflowParams>,
+    ) -> Result<CallToolResult, McpError> {
+        tools::run_workflow_impl(&self.com_thread, params.steps)
+            .await
+            .map_err(McpError::from)
+    }
 }
 
 #[tool_handler]
@@ -316,7 +338,13 @@ impl ServerHandler for DesktopAutomationServer {
             instructions: Some(
                 "MCP server for controlling Windows desktop applications (WinForms, WPF, Win32) \
                  via UI Automation. Use list_windows to discover apps, get_window_tree to explore \
-                 controls, and interaction tools to click, type, and read values."
+                 controls, and interaction tools to click, type, and read values.\n\n\
+                 IMPORTANT: For multi-step operations (filling forms, navigating menus, automating \
+                 sequences), prefer the run_workflow tool over calling individual tools one at a time. \
+                 run_workflow accepts an array of steps and executes them all server-side with automatic \
+                 element context passing — find_element/wait_for_element steps set the context, and \
+                 subsequent action steps (click, set_value, send_keys, etc.) use it automatically. \
+                 This is faster, more reliable, and prevents context loss on long processes."
                     .to_string(),
             ),
         }

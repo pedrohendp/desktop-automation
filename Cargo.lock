@@ -327,6 +327,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "desktop-automation"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base64",
+ "image",
+ "rmcp",
+ "schemars",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+ "uiautomation",
+ "win-screenshot",
+ "windows",
+]
+
+[[package]]
 name = "dyn-clone"
 version = "1.0.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1638,26 +1658,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3949bd5b99cafdf1c7ca86b43ca564028dfe27d66958f2470940f73d86d75b37"
 dependencies = [
  "windows-link",
-]
-
-[[package]]
-name = "desktop-automation"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "base64",
- "image",
- "rmcp",
- "schemars",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
- "tracing-subscriber",
- "uiautomation",
- "win-screenshot",
- "windows",
 ]
 
 [[package]]
